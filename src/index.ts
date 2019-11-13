@@ -1,13 +1,30 @@
-chrome.runtime.sendMessage("api", response => {
-  console.log(response);
-});
+import childListObserver from "./lib/childListObserver";
 
-document.getElementsByClassName("aa");
-const a: NodeListOf<HTMLLIElement> = document.querySelectorAll(
-  ".ocean-ui-plugin-mention-ac-item-icon"
-);
+const mutateIcon = () => {
+  childListObserver(".ocean-ui-plugin-mention-ac-item-icon", icons => {
+    for (const icon of icons) {
+      icon.style.opacity = "50%";
+    }
+  });
+};
 
-a.forEach(item => {
-  item.style.opacity = "0";
+chrome.storage.local.get(["saved_time"], function(obj) {
+  // 最終更新からN時間経過したかで再取得の要否を確認
+  const saved_time = obj.saved_time;
+  if (
+    saved_time === undefined ||
+    Date.now() - Number(saved_time) > 60 * 60 * 1000
+  ) {
+    // APIの実行
+    chrome.runtime.sendMessage("api", response => {
+      console.log(response);
+      mutateIcon();
+    });
+  }
+  // 最終更新からN時間経過していないときはキャッシュから取得
+  else {
+    // TODO キャッシュからデータを取得する処理を実装
+
+    mutateIcon();
+  }
 });
-// a.forEach(item => item.style.)
