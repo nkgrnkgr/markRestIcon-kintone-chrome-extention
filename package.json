@@ -5,7 +5,8 @@
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "format": "prettier src/**/* --write"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
   "devDependencies": {
     "@types/chrome": "0.0.91",
     "@types/node": "^12.12.7",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.19.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2",
     "webpack": "^4.41.2",
@@ -28,5 +32,16 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json,html,css}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
