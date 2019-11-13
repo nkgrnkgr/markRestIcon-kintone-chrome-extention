@@ -4,6 +4,13 @@
   "description": "Build an Extension!",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://bozuman.cybozu.com/*"],
+      "css": ["css/index.css"],
+      "js": ["js/index.js"]
+    }
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
