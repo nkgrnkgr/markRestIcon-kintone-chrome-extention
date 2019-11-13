@@ -1,9 +1,4 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-'use strict';
-
+import api from "./api";
 chrome.runtime.onInstalled.addListener(function() {
   chrome.storage.sync.set({color: '#3aa757'}, function() {
     console.log('The color is green.');
@@ -17,3 +12,12 @@ chrome.runtime.onInstalled.addListener(function() {
     }]);
   });
 });
+chrome.runtime.onMessage.addListener(async (message, sender, response) => {
+  switch(message) {
+    case "api":
+      return await api();
+      break;
+    default:
+
+  }
+})

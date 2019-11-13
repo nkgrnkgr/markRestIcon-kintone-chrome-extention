@@ -1,3 +1,3 @@
-import module from "./module";
-
-module();
+chrome.runtime.sendMessage("api", (response) => {
+  console.log(response);
+});
