@@ -2,7 +2,6 @@ type Callback = (icons: Array<HTMLElement>) => void;
 export default (selectors: string, callback: Callback) => {
   const observer = new MutationObserver(records => {
     for (const record of records) {
-      if (record.type === "childList") {
         for (const node of Array.from(record.addedNodes)) {
           const _node = node as HTMLElement;
           if (_node.querySelectorAll) {
@@ -12,10 +11,10 @@ export default (selectors: string, callback: Callback) => {
             callback(childList as HTMLElement[]);
           }
         }
-      }
     }
   });
   observer.observe(document.body, {
-    childList: true
+    childList: true,
+    subtree: true
   });
 };

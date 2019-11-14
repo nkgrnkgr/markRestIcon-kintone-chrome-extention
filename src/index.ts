@@ -5,8 +5,13 @@ const mutateIcon = () => {
   childListObserver(".ocean-ui-plugin-mention-ac-item-icon", icons => {
     for (const icon of icons) {
       const parser = new URL(icon.getAttribute("src"));
-      console.log(parser.search.match(/id=([0-9]+)/)[1]); // TODO: 写真がないと死ぬ
-      icon.style.opacity = "50%";
+      const id = parser.search.match(/id=([0-9]+)/);
+       if (id === null) {
+         continue;
+       }
+       if (cache.includes(id[1])) {
+         icon.style.opacity = "20%";
+       }
     }
   });
 };
