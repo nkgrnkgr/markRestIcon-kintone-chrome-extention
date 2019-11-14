@@ -2,11 +2,13 @@ import mutateMentionIcon from "./lib/mutateMentionIcon";
 import mutateThreadCommentsIcon from "./lib/mutateThreadCommentsIcon";
 import mutateNotificationIcon from "./lib/mutateNotificationIcon";
 import mutateAppCommentsIcon from "./lib/mutateAppCommentsIcon";
+import mutateSpacePeopleIcon from "./lib/mutateSpacePeopleIcon";
 
 mutateMentionIcon();
 mutateThreadCommentsIcon();
 mutateNotificationIcon();
 mutateAppCommentsIcon();
+mutateSpacePeopleIcon();
 
 chrome.storage.local.get("saved_time", function(obj) {
   // 最終更新からN時間経過したかで再取得の要否を確認
