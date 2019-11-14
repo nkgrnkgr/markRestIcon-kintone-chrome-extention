@@ -1,23 +1,8 @@
-import childListObserver from "./lib/childListObserver";
+import mutateMentionIcon from "./lib/mutateMentionIcon";
 const cache = [];
 
-const mutateIcon = () => {
-  childListObserver(".ocean-ui-plugin-mention-ac-item-icon", icons => {
-    for (const icon of icons) {
-      const parser = new URL(icon.getAttribute("src"));
-      const id = parser.search.match(/id=([0-9]+)/);
-      if (id === null) {
-        continue;
-      }
-      if (cache.includes(id[1])) {
-        icon.style.opacity = "20%";
-        const childImage = document.createElement("img");
-        childImage.src = "https://i.imgur.com/DkIC6Gd.png";
-        childImage.style.position = "absolute";
-        icon.parentElement.prepend(childImage);
-      }
-    }
-  });
+const mutateIcon = (ids: string[]) => {
+  mutateMentionIcon(ids);
 };
 
 chrome.storage.local.get(["saved_time"], function(obj) {
@@ -30,13 +15,13 @@ chrome.storage.local.get(["saved_time"], function(obj) {
         const { id } = response.users[index];
         cache.push(id);
       }
-      mutateIcon();
+      mutateIcon(cache);
     });
   }
   // 最終更新からN時間経過していないときはキャッシュから取得
   else {
     // TODO キャッシュからデータを取得する処理を実装
 
-    mutateIcon();
+    mutateIcon(cache);
   }
 });
