@@ -1,6 +1,6 @@
-const path = require('path');
-const webpack = require('webpack');
-require('dotenv').config();
+const path = require("path");
+const webpack = require("webpack");
+require("dotenv").config();
 module.exports = {
   mode: "production",
   entry: {
@@ -8,25 +8,18 @@ module.exports = {
     background: "./src/background.ts"
   },
   output: {
-    path: path.join(__dirname,"dist/js/"),
-    filename: "[name].js",
+    path: path.join(__dirname, "dist/js/"),
+    filename: "[name].js"
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader'
+        use: "ts-loader"
       }
     ]
   },
   resolve: {
-    extensions: [
-      ".ts"
-    ]
-  },
-  plugins : [
-    new webpack.DefinePlugin({
-      "process.env.AUTH_KEY": JSON.stringify(process.env.AUTH_KEY),
-    })
-  ],
+    extensions: [".ts"]
+  }
 };

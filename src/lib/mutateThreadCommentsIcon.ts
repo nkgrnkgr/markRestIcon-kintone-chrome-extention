@@ -16,7 +16,13 @@ export default () => {
         }
         if (ids.includes(id[1])) {
           icon.style.opacity = ICON_URL_DATA.opacityValue;
-          icon.appendChild(createRestImgElement());
+          icon.appendChild(
+            createRestImgElement({
+              position: "absolute",
+              width: "100%",
+              height: "100%"
+            })
+          );
         }
       }
     });

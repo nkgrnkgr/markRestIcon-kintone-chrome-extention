@@ -14,7 +14,13 @@ const mutateIcons = (wrappers, ids) => {
     }
     if (ids.includes(id[1])) {
       icon.style.opacity = ICON_URL_DATA.opacityValue;
-      icon.parentElement.prepend(createRestImgElement());
+      icon.parentElement.prepend(
+        createRestImgElement({
+          position: "absolute",
+          width: "100%",
+          height: "100%"
+        })
+      );
     }
   }
 };
