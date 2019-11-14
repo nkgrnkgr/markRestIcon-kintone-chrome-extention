@@ -1,4 +1,5 @@
 import childListObserver from "./lib/childListObserver";
+const iconUrl = "https://i.imgur.com/JxH0eUF.png";
 const cache = [];
 
 const mutateIcon = () => {
@@ -12,7 +13,7 @@ const mutateIcon = () => {
       if (cache.includes(id[1])) {
         icon.style.opacity = "20%";
         const childImage = document.createElement("img");
-        childImage.src = "https://i.imgur.com/DkIC6Gd.png";
+        childImage.src = iconUrl;
         childImage.style.position = "absolute";
         icon.parentElement.prepend(childImage);
       }
