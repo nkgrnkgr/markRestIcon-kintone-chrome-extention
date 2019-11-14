@@ -1,4 +1,5 @@
 import childListObserver from "./childListObserver";
+import { ICON_URL_DATA } from "./IconConstants";
 
 export default (ids: string[]) => {
   childListObserver("div.ocean-ntf-ntfitem-img > span", icons => {
@@ -8,7 +9,7 @@ export default (ids: string[]) => {
         continue;
       }
       if (ids.includes(id[1])) {
-        icon.style.opacity = "20%";
+        icon.style.opacity = ICON_URL_DATA.opacityValue;
       }
     }
   });
