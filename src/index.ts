@@ -1,8 +1,10 @@
 import mutateMentionIcon from "./lib/mutateMentionIcon";
+import mutateThreadCommentsIcon from "./lib/mutateThreadCommentsIcon";
 const cache = [];
 
 const mutateIcon = (ids: string[]) => {
   mutateMentionIcon(ids);
+  mutateThreadCommentsIcon(ids);
 };
 
 chrome.storage.local.get(["saved_time"], function(obj) {
@@ -15,13 +17,8 @@ chrome.storage.local.get(["saved_time"], function(obj) {
         const { id } = response.users[index];
         cache.push(id);
       }
-      mutateIcon(cache);
     });
   }
-  // 最終更新からN時間経過していないときはキャッシュから取得
-  else {
-    // TODO キャッシュからデータを取得する処理を実装
-
-    mutateIcon(cache);
-  }
 });
+
+mutateIcon(cache);
