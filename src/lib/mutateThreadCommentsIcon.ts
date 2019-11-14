@@ -2,7 +2,7 @@ import childListObserver from "./childListObserver";
 import { ICON_URL_DATA } from "./IconConstants";
 import createRestImgElement from "./createRestImgElement";
 
-export default (ids: string[]) => {
+export default () => {
   childListObserver(".ocean-ui-comments-commentbase-usericon", icons => {
     chrome.storage.local.get(["day_off_user_ids"], obj => {
       const ids = obj.day_off_user_ids;

@@ -2,7 +2,7 @@ import childListObserver from "./childListObserver";
 import { ICON_URL_DATA } from "./IconConstants";
 import createRestImgElement from "./createRestImgElement";
 
-export default (ids: string[]) => {
+export default () => {
   childListObserver("div.ocean-ntf-ntfitem-img > span", icons => {
     chrome.storage.local.get(["day_off_user_ids"], obj => {
       const ids = obj.day_off_user_ids;
