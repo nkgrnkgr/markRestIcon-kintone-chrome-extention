@@ -1,13 +1,14 @@
 import mutateMentionIcon from "./lib/mutateMentionIcon";
 import mutateThreadCommentsIcon from "./lib/mutateThreadCommentsIcon";
 import mutateNotificationIcon from "./lib/mutateNotificationIcon";
-
+import mutateAppCommentsIcon from "./lib/mutateAppCommentsIcon";
 const cache = [];
 
 const mutateIcon = (ids: string[]) => {
   mutateMentionIcon(ids);
   mutateThreadCommentsIcon(ids);
   mutateNotificationIcon(ids);
+  mutateAppCommentsIcon(ids);
 };
 
 chrome.storage.local.get(["saved_time"], function(obj) {
