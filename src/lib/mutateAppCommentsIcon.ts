@@ -1,5 +1,6 @@
 import childListObserver from "./childListObserver";
 import { ICON_URL_DATA } from "./IconConstants";
+import createRestImgElement from "./createRestImgElement";
 
 const iconWrapeerClassName = ".itemlist-userImage-gaia";
 
@@ -13,10 +14,7 @@ const mutateIcons = (wrappers, ids) => {
     }
     if (ids.includes(id[1])) {
       icon.style.opacity = ICON_URL_DATA.opacityValue;
-      const childImage = document.createElement("img");
-      childImage.src = ICON_URL_DATA.url;
-      childImage.style.position = "absolute";
-      icon.parentElement.prepend(childImage);
+      icon.parentElement.prepend(createRestImgElement());
     }
   }
 };

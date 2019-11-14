@@ -1,7 +1,7 @@
 import childListObserver from "./childListObserver";
 import { ICON_URL_DATA } from "./IconConstants";
-
-export default () => {
+import createRestImgElement from "./createRestImgElement";
+export default (ids: string[]) => {
   childListObserver(".ocean-ui-plugin-mention-ac-item-icon", icons => {
     chrome.storage.local.get("day_off_user_ids", obj => {
       const ids = obj.day_off_user_ids;
@@ -16,10 +16,7 @@ export default () => {
         }
         if (ids.includes(id[1])) {
           icon.style.opacity = ICON_URL_DATA.opacityValue;
-          const childImage = document.createElement("img");
-          childImage.src = ICON_URL_DATA.url;
-          childImage.style.position = "absolute";
-          icon.parentElement.prepend(childImage);
+          icon.parentElement.prepend(createRestImgElement());
         }
       }
     });
