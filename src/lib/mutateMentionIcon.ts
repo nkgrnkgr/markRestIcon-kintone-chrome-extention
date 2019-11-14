@@ -1,4 +1,5 @@
 import childListObserver from "./childListObserver";
+import { ICON_URL_DATA } from "./IconConstants";
 export default (ids: string[]) => {
   childListObserver(".ocean-ui-plugin-mention-ac-item-icon", icons => {
     for (const icon of icons) {
@@ -8,9 +9,9 @@ export default (ids: string[]) => {
         continue;
       }
       if (ids.includes(id[1])) {
-        icon.style.opacity = "20%";
+        icon.style.opacity = ICON_URL_DATA.opacityValue;
         const childImage = document.createElement("img");
-        childImage.src = "https://i.imgur.com/DkIC6Gd.png";
+        childImage.src = ICON_URL_DATA.url;
         childImage.style.position = "absolute";
         icon.parentElement.prepend(childImage);
       }
