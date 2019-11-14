@@ -4,7 +4,7 @@ const usersApiUrl = `${origin}/v1/users.json`;
 
 export default () => {
   const options = {
-    headers: { "X-Cybozu-Authorization": process.env.AUTH_KEY }
+    headers: { "X-Requested-With": "XMLHttpRequest" }
   };
   return fetch(dayOffTodayUserApiUrl, options)
     .then(response => response.json())
