@@ -21,10 +21,16 @@ const mutateIcons = (wrappers, ids) => {
   }
 };
 
-export default (ids: string[]) => {
+export default () => {
   const wrappers = document.querySelectorAll(iconWrapeerClassName);
-  mutateIcons(wrappers, ids);
-  childListObserver(iconWrapeerClassName, wrappers => {
+  chrome.storage.local.get("day_off_user_ids", obj => {
+    const ids = obj.day_off_user_ids;
+    if (ids === undefined || ids.length === 0) {
+      return;
+    }
     mutateIcons(wrappers, ids);
+    childListObserver(iconWrapeerClassName, wrappers => {
+      mutateIcons(wrappers, ids);
+    });
   });
 };
