@@ -22,4 +22,10 @@ jobs:
         npm ci
         npm run build
         npm run release
+    - name: Upload to release
+      uses: Shopify/upload-to-release
+      with:
+        path: markRestIcon.zip
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        content-type: application/zip
     
