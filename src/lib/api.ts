@@ -1,15 +1,28 @@
 const origin = "https://bozuman.cybozu.com";
-const dayOffTodayUserApiUrl = `${origin}/k/v1/records.json?app=43250&query=取得日%20in%20(TODAY())%20and%20勤怠%20in%20("終日休")`;
+const dayOffTodayUserInRegistrationAppApiUrl =
+    `${origin}/k/v1/records.json?app=43250&query=取得日%20in%20(TODAY())%20and%20勤怠%20in%20("終日休")%20and%20ステータス%20=%20"登録"`;
+const dayOffTodayUserInHolidayShiftAppApiUrl =
+    `${origin}/k/v1/records.json?app=5177&query=
+    ((振替休日取得日休日%20%3D%20TODAY()%20and%20振替休日変更取得日と異なる場合%20%3D%20"")%20or%20(振替休日変更取得日と異なる場合%20%3D%20TODAY()))
+    %20and%20ドロップダウン%20in%20("1日(終日)")%20and%20ステータス%20in%20("承認",%20"休日出勤済",%20"振休取得済")`;
 const usersApiUrl = `${origin}/v1/users.json`;
 
 export default () => {
   const options = {
     headers: { "X-Requested-With": "XMLHttpRequest" }
   };
-  return fetch(dayOffTodayUserApiUrl, options)
-    .then(response => response.json())
-    .then(json => {
-      const records = json.records;
+  return Promise.all([
+      fetch(dayOffTodayUserInRegistrationAppApiUrl, options),
+      fetch(dayOffTodayUserInHolidayShiftAppApiUrl, options),
+  ])
+    .then(response => {
+      const response0 = response[0].json();
+      const response1 = response[1].json();
+
+      return [...response0.records, ...response1.records];
+    })
+    .then(records => {
+      // const records = json.records;
       const size = records.length;
       if (size === 0) {
         return {};
