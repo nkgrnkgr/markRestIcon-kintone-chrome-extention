@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "release": "rimraf markRestIcon.zip && bestzip markRestIcon.zip dist/ && git add markRestIcon.zip",
+    "release": "npm run build && rimraf markRestIcon.zip && bestzip markRestIcon.zip dist/ && git add markRestIcon.zip",
     "format": "prettier 'src/**/*' --write"
   },
   "repository": {
