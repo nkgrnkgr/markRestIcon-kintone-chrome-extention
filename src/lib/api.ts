@@ -1,5 +1,5 @@
 const origin = "https://bozuman.cybozu.com";
-const dayOffTodayUserApiUrl = `${origin}/k/v1/records.json?app=43250&query=取得日%20in%20(TODAY())`;
+const dayOffTodayUserApiUrl = `${origin}/k/v1/records.json?app=43250&query=取得日%20in%20(TODAY())%20and%20勤怠%20in%20("終日休")`;
 const usersApiUrl = `${origin}/v1/users.json`;
 
 export default () => {
