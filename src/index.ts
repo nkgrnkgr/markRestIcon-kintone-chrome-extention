@@ -13,7 +13,10 @@ mutateSpacePeopleIcon();
 chrome.storage.local.get("saved_time", function(obj) {
   // 最終更新からN時間経過したかで再取得の要否を確認
   const saved_time = obj.saved_time;
-  if (saved_time === undefined || Date.now() - Number(saved_time) > 5 * 1000) {
+  if (
+    saved_time === undefined ||
+    Date.now() - Number(saved_time) > 60 * 60 * 1000
+  ) {
     // APIの実行
     chrome.runtime.sendMessage("api", response => {
       const ids = [];
