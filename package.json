@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "release": "bestzip markRestIcon.zip dist/",
+    "release": "rimraf markRestIcon.zip && bestzip markRestIcon.zip dist/ && git add markRestIcon.zip",
     "format": "prettier 'src/**/*' --write"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2",
     "webpack": "^4.41.2",
@@ -37,7 +38,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run release"
     }
   },
   "lint-staged": {
