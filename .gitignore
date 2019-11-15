@@ -2,3 +2,5 @@ dist/js
 node_modules
 .env
 .idea
+markRestIcon.zip
+.DS_Store
