@@ -1,7 +1,7 @@
 {
-  "name": "Getting Started Example",
-  "version": "1.0",
-  "description": "Build an Extension!",
+  "name": "Mark Rest Icon",
+  "version": "0.9",
+  "description": "kintoneでお休みの人を可視化する",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "options_page": "options.html",
   "content_scripts": [
@@ -18,17 +18,17 @@
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
+      "16": "images/16x16_markRestIcon.png",
+      "32": "images/32x32_markRestIcon.png",
+      "48": "images/48x48_markRestIcon.png",
+      "128": "images/128x128_markRestIcon.png"
     }
   },
   "icons": {
-    "16": "images/get_started16.png",
-    "32": "images/get_started32.png",
-    "48": "images/get_started48.png",
-    "128": "images/get_started128.png"
+    "16": "images/16x16_markRestIcon.png",
+    "32": "images/32x32_markRestIcon.png",
+    "48": "images/48x48_markRestIcon.png",
+    "128": "images/128x128_markRestIcon.png"
   },
   "manifest_version": 2
 }
