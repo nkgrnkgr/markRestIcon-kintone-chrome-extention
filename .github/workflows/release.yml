@@ -17,17 +17,4 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12
-    - name: Build
-      run: |
-        npm ci
-        npm run build
-        npm run release
-    - name: Upload to release
-      uses: Shopify/upload-to-release
-      with:
-        path: markRestIcon.zip
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        content-type: application/zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
