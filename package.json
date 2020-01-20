@@ -25,7 +25,7 @@
     "@types/node": "12.12.25",
     "bestzip": "2.1.5",
     "husky": "4.0.10",
-    "lint-staged": "9.5.0",
+    "lint-staged": "10.0.1",
     "prettier": "1.19.1",
     "rimraf": "3.0.0",
     "ts-loader": "6.2.1",
