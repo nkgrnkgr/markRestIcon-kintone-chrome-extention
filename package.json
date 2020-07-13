@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/nkgrnkgr/markRestIcon-kintone-chrome-extention#readme",
   "devDependencies": {
-    "@types/chrome": "0.0.117",
-    "@types/node": "12.12.47",
+    "@types/chrome": "0.0.120",
+    "@types/node": "12.12.50",
     "bestzip": "2.1.5",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
