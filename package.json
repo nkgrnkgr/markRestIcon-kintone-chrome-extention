@@ -23,14 +23,14 @@
   "devDependencies": {
     "@types/chrome": "0.0.122",
     "@types/node": "12.12.53",
-    "bestzip": "2.1.5",
+    "bestzip": "2.1.6",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
     "prettier": "2.0.5",
     "rimraf": "3.0.2",
-    "ts-loader": "8.0.1",
+    "ts-loader": "8.0.2",
     "typescript": "3.9.7",
-    "webpack": "4.44.0",
+    "webpack": "4.44.1",
     "webpack-cli": "3.3.12"
   },
   "dependencies": {
